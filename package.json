@@ -1,0 +1,62 @@
+{
+  "name": "ai-humanizer",
+  "version": "1.5.1",
+  "description": "Production-ready AI humanization tool with detection, translation, and analysis features",
+  "main": "server.ts",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "start": "npm run build && node server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "google-generative-ai": "^0.1.3",
+    "multer": "^1.4.5-lts.1",
+    "axios": "^1.6.2",
+    "pdf-parse": "^1.1.1",
+    "tesseract.js": "^4.1.1",
+    "yt-dlp": "^1.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.1.1",
+    "prettier": "^3.0.3",
+    "eslint": "^8.51.0",
+    "@types/express": "^4.17.20",
+    "@types/node": "^20.9.0",
+    "@types/multer": "^1.4.9"
+  },
+  "keywords": [
+    "ai-humanizer",
+    "text-humanization",
+    "ai-detection",
+    "anti-ai-detection",
+    "gpt-detector",
+    "paraphrase",
+    "translation",
+    "image-detection"
+  ],
+  "author": "kenboi656-crypto",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenboi656-crypto/AI-Humanizer.git"
+  },
+  "homepage": "https://github.com/kenboi656-crypto/AI-Humanizer#readme",
+  "bugs": {
+    "url": "https://github.com/kenboi656-crypto/AI-Humanizer/issues"
+  }
+}
