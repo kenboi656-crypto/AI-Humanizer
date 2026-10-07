@@ -1,0 +1,27 @@
+{
+  "platform": "hostinger",
+  "type": "node-application",
+  "version": "1.5.1",
+  "node_version": "18.x",
+  "npm_version": "9.x",
+  "build": {
+    "command": "npm install && npm run build",
+    "output_directory": "dist"
+  },
+  "start": "node server.js",
+  "environment": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  },
+  "domains": {
+    "primary": "your-domain.com",
+    "ssl": true,
+    "www": true
+  },
+  "features": {
+    "https": true,
+    "auto_restart": true,
+    "error_logging": true,
+    "performance_monitoring": true
+  }
+}

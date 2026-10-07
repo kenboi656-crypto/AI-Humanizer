@@ -1,0 +1,226 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║           AI-HUMANIZER HOSTINGER DEPLOYMENT CHECKLIST            ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+📋 PRE-DEPLOYMENT
+═════════════════════════════════════════════════════════════════════
+
+□ Hostinger Account Setup
+  □ Account created and verified
+  □ Domain purchased/pointed to Hostinger
+  □ hPanel access confirmed
+  □ SSH access enabled (if needed)
+  □ Node.js 18+ support verified
+
+□ API Keys & Credentials
+  □ Google Gemini API key obtained
+  □ API key has quota/credits
+  □ Firebase keys (optional but recommended)
+  □ API keys safely stored (NOT in git)
+
+□ Repository Ready
+  □ Code pushed to GitHub
+  □ All files present
+  □ .env.example has all required vars
+  □ .htaccess configured for Hostinger
+  □ server.ts properly configured
+
+🚀 DEPLOYMENT PROCESS
+═════════════════════════════════════════════════════════════════════
+
+□ Access Hostinger
+  □ Log into https://hpanel.hostinger.com/
+  □ Select correct domain
+  □ Note down SSH credentials
+
+□ SSH & Initial Setup
+  □ SSH into server
+  □ Navigate to public_html (or domain directory)
+  □ Clone GitHub repository
+  □ Verify Node.js version: node -v (should be 18+)
+  □ Verify npm version: npm -v (should be 9+)
+
+□ Install & Configure
+  □ Run: npm install
+  □ Copy .env.example to .env
+  □ Edit .env with GEMINI_API_KEY
+  □ Set APP_URL to your domain (https://your-domain.com)
+  □ Verify all environment variables are set
+
+□ Build Application
+  □ Run: npm run build
+  □ Build completes without errors
+  □ Check dist/ folder exists
+  □ Check server.js file created
+
+□ Configure Reverse Proxy
+  □ Verify .htaccess in public_html root
+  □ Verify ProxyPassReverse configured for port 3000
+  □ Check .htaccess not hiding files
+
+□ SSL & HTTPS
+  □ SSL certificate installed (Hostinger auto-provides)
+  □ HTTPS accessible from browser
+  □ HTTP redirects to HTTPS
+  □ Certificate shows as valid (no warnings)
+
+□ Start Application
+  □ Option A - Via hPanel:
+    □ Go to Applications
+    □ Create/Start Node.js application
+    □ Set startup file: server.js
+    □ Set port: 3000
+    □ Status shows: Running (green)
+  □ Option B - Via SSH/PM2:
+    □ Run: npm install -g pm2
+    □ Run: pm2 start server.js --name "ai-humanizer"
+    □ Run: pm2 startup
+    □ Run: pm2 save
+    □ Verify status: pm2 status
+
+✅ VERIFICATION
+═════════════════════════════════════════════════════════════════════
+
+□ Health Check
+  □ curl https://your-domain.com/api/health
+  □ Response: {"status":"healthy", ...}
+  □ Status code: 200 OK
+
+□ Core Features
+  □ Text Humanization works
+    □ curl -X POST https://your-domain.com/api/humanize \
+      -d '{"text": "AI text here"}'
+    □ Returns humanized text
+    □ No errors in response
+  
+  □ AI Detection works
+    □ curl -X POST https://your-domain.com/api/detect \
+      -d '{"text": "Some text"}'
+    □ Returns detection analysis
+  
+  □ File Upload works
+    □ Can upload PDF/image files
+    □ Files process correctly
+  
+  □ Image Detection works
+    □ Can upload image files
+    □ Returns authenticity analysis
+  
+  □ YouTube Summarizer works
+    □ curl -X POST https://your-domain.com/api/summarize-youtube \
+      -d '{"url": "...", "transcript": "..."}'
+  
+  □ Translation works
+    □ curl -X POST https://your-domain.com/api/translate \
+      -d '{"text": "Hello", "targetLanguage": "Spanish"}'
+    □ Returns "Hola" (or similar)
+
+□ AI Detection Score
+  □ Humanized output tested in ZeroGPT
+  □ Score shows: 0% AI (or very low)
+  □ JDPD test shows: Human
+  □ Turnitin shows: Not AI
+
+□ Performance
+  □ Pages load in <2 seconds
+  □ API responses in <1 second
+  □ No console errors
+  □ No 404 errors
+  □ No CORS errors
+
+□ Security
+  □ HTTPS only (HTTP redirects)
+  □ No sensitive data in logs
+  □ .env file not accessible
+  □ Security headers present
+  □ CSRF protection active
+
+🔧 POST-DEPLOYMENT
+═════════════════════════════════════════════════════════════════════
+
+□ Monitoring & Logs
+  □ Check application logs in hPanel
+  □ Monitor error log for issues
+  □ Set up log rotation (optional)
+  □ Enable performance monitoring
+
+□ Backup & Recovery
+  □ Enable automatic backups in Hostinger
+  □ Document backup location
+  □ Test restore process (optional)
+  □ Keep .env backup in secure location
+
+□ Updates & Maintenance
+  □ Set up auto-update script (optional)
+  □ Document update process
+  □ Schedule regular checks (weekly)
+  □ Monitor API quota usage
+
+□ Custom Domain (if different from Hostinger domain)
+  □ Domain DNS points to Hostinger
+  □ DNS propagation complete (24-48 hours)
+  □ SSL certificate issued for custom domain
+  □ APP_URL updated in .env
+
+□ Performance Optimization
+  □ Enable caching headers
+  □ Verify gzip compression active
+  □ Monitor bandwidth usage
+  □ Optimize images if needed
+
+□ Documentation
+  □ Document all configuration changes
+  □ Save SSH credentials securely
+  □ Document domain pointing
+  □ Keep API key in secure vault
+
+🎯 FINAL VERIFICATION
+═════════════════════════════════════════════════════════════════════
+
+□ Browser Test
+  □ Visit https://your-domain.com in browser
+  □ Web interface loads
+  □ No console errors (F12)
+  □ All buttons clickable
+
+□ Full Feature Test
+  □ Paste text → Humanize → Check output
+  □ Detect AI content
+  □ Upload PDF/Image
+  □ Test all tabs
+
+□ Production Readiness
+  □ All errors fixed
+  □ All features working 100%
+  □ 0% AI detection confirmed
+  □ Performance acceptable
+  □ Security verified
+  □ Monitoring active
+
+✨ CONGRATULATIONS!
+═════════════════════════════════════════════════════════════════════
+
+✅ AI-HUMANIZER is live on Hostinger!
+
+📊 Status:
+   • Application: Running ✓
+   • Features: 100% Accurate ✓
+   • AI Detection: 0% ✓
+   • HTTPS: Active ✓
+   • Performance: Optimal ✓
+
+📝 Next Steps:
+   1. Share your domain with users
+   2. Monitor logs weekly
+   3. Check API quota monthly
+   4. Update code when needed
+   5. Back up regularly
+
+🔗 Quick Links:
+   • hPanel: https://hpanel.hostinger.com/
+   • Health Check: https://your-domain.com/api/health
+   • GitHub: https://github.com/kenboi656-crypto/AI-Humanizer
+
+═════════════════════════════════════════════════════════════════════
+📧 Support: Check HOSTINGER-DEPLOY.md for troubleshooting
+═════════════════════════════════════════════════════════════════════
